@@ -7,7 +7,7 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fafafa;
+  background-color: #c1c0c0;
   color: #212121;
   line-height: 1.5;
 }
@@ -27,5 +27,10 @@ body {
 .country-list li {
   display: flex;
   align-items: center;
-  gap: 10px;
+  height: 50px;
+ 
+}
+
+.country-list span {
+  margin-left: 5px;
 }

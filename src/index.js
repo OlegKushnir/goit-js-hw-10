@@ -33,13 +33,12 @@ function renderCountries(countries) {
     const markup = countries
       .map(country => {
         return `<img 
-    src="${country.flags.svg}"
-    alt="${country.name.official} flag" width=320 heigth=240>
-    
-    <p><b>Country</b>: ${country.name.official}</p>
-    <p><b>Capital</b>: ${country.capital}</p>
-      <p><b>Population</b>: ${country.population}</p>
-      <p><b>Languages</b>: ${Object.values(country.languages).join(', ')}</p>`;
+        src="${country.flags.svg}"
+        alt="${country.name.official} flag" width=320 heigth=240>
+        <p><b>Country</b>: ${country.name.official}</p>
+        <p><b>Capital</b>: ${country.capital}</p>
+        <p><b>Population</b>: ${country.population}</p>
+        <p><b>Languages</b>: ${Object.values(country.languages).join(', ')}</p>`;
       })
       .join('');
       countryList.innerHTML = '';
@@ -52,12 +51,13 @@ function renderCountries(countries) {
   } else {
     const markup = countries
       .map(country => {
-        return `<li height =40>
+        return `
+      <li>
       <img 
-    src="${country.flags.svg}"
-    alt="${country.name.official} flag" width=40 heigth=40>
-    <span><b> ${country.name.official}</b></span>
-    </li>`;
+      src="${country.flags.svg}"
+      alt="${country.name.official} flag" width=53 heigth=40>
+      <span><b> ${country.name.official}</b></span>
+      </li>`;
       })
       .join('');
     countryInfo.innerHTML = '';
