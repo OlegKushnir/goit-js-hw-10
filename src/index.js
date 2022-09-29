@@ -7,12 +7,14 @@ const DEBOUNCE_DELAY = 300;
 
 const inputRef = document.querySelector('#search-box');
 const countryList = document.querySelector('.country-list');
+const countryInfo = document.querySelector('.country-info');
 inputRef.addEventListener('input', debounce(onInputName, DEBOUNCE_DELAY));
 
 function onInputName(evt) {
   const searchedCountry = evt.target.value.trim();
   if (searchedCountry === '') {
     countryList.innerHTML = '';
+    countryInfo.innerHTML = '';
     return;
   }
   fetchCountries(searchedCountry)
@@ -26,22 +28,22 @@ function onInputName(evt) {
 }
 
 function renderCountries(countries) {
-  console.log(countries.length);
+  console.dir(countries);
   if (countries.length === 1) {
     const markup = countries
       .map(country => {
-        return `<li>
-      <img 
+        return `<img 
     src="${country.flags.svg}"
-    alt="${country.name.official} flag" width=80 heigth=60>
-    <span> ${country.name.official}</span>
+    alt="${country.name.official} flag" width=320 heigth=240>
+    
+    <p><b>Country</b>: ${country.name.official}</p>
     <p><b>Capital</b>: ${country.capital}</p>
       <p><b>Population</b>: ${country.population}</p>
-      <p><b>Languages</b>: ${Object.values(country.languages).join(', ')}</p>
-    </li>`;
+      <p><b>Languages</b>: ${Object.values(country.languages).join(', ')}</p>`;
       })
       .join('');
-    countryList.innerHTML = markup;
+      countryList.innerHTML = '';
+      countryInfo.innerHTML = markup;
     return;
   }
   if (countries.length > 10) {
@@ -50,14 +52,15 @@ function renderCountries(countries) {
   } else {
     const markup = countries
       .map(country => {
-        return `<li>
+        return `<li height =40>
       <img 
     src="${country.flags.svg}"
     alt="${country.name.official} flag" width=40 heigth=40>
-    <span> ${country.name.official}</span>
+    <span><b> ${country.name.official}</b></span>
     </li>`;
       })
       .join('');
+    countryInfo.innerHTML = '';
     countryList.innerHTML = markup;
   }
 }

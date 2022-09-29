@@ -21,4 +21,11 @@ body {
 
 .country-list {
   list-style-type: none;
+  padding-inline-start: 0;
+}
+
+.country-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
