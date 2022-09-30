@@ -23,6 +23,8 @@ function onInputName(evt) {
       console.dir(error);
       if (error.message === '404') {
         Notify.failure('Oops, there is no country with that name');
+        countryInfo.innerHTML = '';
+        countryList.innerHTML = '';
       }
     });
 }
@@ -48,6 +50,7 @@ function renderCountries(countries) {
   if (countries.length > 10) {
     Notify.info('Too many matches found. Please enter a more specific name.');
     countryList.innerHTML = '';
+    countryInfo.innerHTML = '';
   } else {
     const markup = countries
       .map(country => {
